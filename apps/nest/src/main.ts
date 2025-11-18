@@ -11,10 +11,12 @@ async function bootstrap() {
     AppModule,
     new FastifyAdapter(),
   );
+
   app.useGlobalPipes(
     new ValidationPipe({
       // 型変換: 入力値をDTOの型に自動変換
       transform: true,
+      transformOptions: { enableImplicitConversion: true }, // ←これが重要
       // リクエストボディの中で、定義されていないプロパティを削除する
       whitelist: true,
       // whitelist外のプロパティが存在する場合、エラーを返す

@@ -1,8 +1,20 @@
 // src/users/dto/search-user.dto.ts
 import { Type } from 'class-transformer';
-import { IsString, IsInt, Min, Max, IsOptional } from 'class-validator';
+import {
+  IsString,
+  IsInt,
+  Min,
+  Max,
+  IsOptional,
+  IsNotEmpty,
+  IsEmail,
+} from 'class-validator';
 
 export class SearchUserDto {
+  @IsOptional()
+  @IsEmail()
+  readonly email: string;
+
   @IsOptional()
   @IsString()
   readonly name: string;

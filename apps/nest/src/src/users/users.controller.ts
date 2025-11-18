@@ -1,4 +1,4 @@
-/* eslint-disable prettier/prettier */
+//users.controller.ts
 import {
   Controller,
   Get,
@@ -8,6 +8,8 @@ import {
   Param,
   Delete,
   Query,
+  Put,
+  HttpCode,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -22,11 +24,6 @@ export class UsersController {
   create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
   }
-
-  // @Get()
-  // findAll(@Query('keyword') keyword: string) {
-  //   return this.usersService.findAll(keyword);
-  // }
 
   @Get()
   findAll(@Query() searchUserDto: SearchUserDto) {
